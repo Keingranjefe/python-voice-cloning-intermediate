@@ -1,0 +1,35 @@
+# Core
+torch>=2.1.0
+torchaudio>=2.1.0
+numpy>=1.24.0
+soundfile>=0.12.1
+librosa>=0.10.1
+pydub>=0.25.1
+audiosegment>=0.0.1  # optional
+
+# ASR / Transcription
+openai-whisper>=20231117
+# o faster-whisper para más velocidad
+# faster-whisper>=1.0.0
+
+# TTS models
+f5-tts>=0.1.0          # principal recomendado
+TTS>=0.22.0            # Coqui / XTTS (alternativa)
+
+# Training utilities
+omegaconf>=2.3.0
+pyyaml>=6.0
+tqdm>=4.66.0
+tensorboard>=2.14.0
+accelerate>=0.25.0
+
+# UI opcional
+gradio>=4.0.0
+
+# Utils
+pandas>=2.0.0
+matplotlib>=3.7.0
+rich>=13.0.0
+
+# Para Windows a veces se necesita
+# sounddevice  # si quieres grabar en vivo
