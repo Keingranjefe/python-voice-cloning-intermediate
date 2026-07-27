@@ -1,0 +1,36 @@
+# Configuración optimizada para RTX 4070 Ti (12 GB VRAM)
+# Fine-tuning F5-TTS - Nivel Intermedio
+
+project:
+  name: "voice-clone-intermediate"
+  output_dir: "models/f5_finetuned"
+  seed: 42
+
+data:
+  train_data_dir: "data/processed"
+  metadata_file: "data/processed/metadata.csv"
+  sample_rate: 24000
+  max_duration: 15.0        # segundos máx por sample
+  min_duration: 2.0
+
+# Hiperparámetros optimizados para 12 GB
+training:
+  batch_size_per_gpu: 4     # bajo para seguridad en 12GB
+  grad_accumulation_steps: 4  # effective batch = 16
+  learning_rate: 1.0e-5
+  max_steps: 20000          # ajusta según cantidad de datos
+  warmup_steps: 500
+  save_every_n_steps: 1000
+  eval_every_n_steps: 500
+  mixed_precision: "bf16"   # o "fp16" si bf16 da problemas
+  max_grad_norm: 1.0
+  num_workers: 4
+
+model:
+  base_model: "SWivid/F5-TTS"   # o checkpoint local
+  finetune: true
+
+inference:
+  ref_audio: "data/processed/ref_sample.wav"
+  language: "es"
+  speed: 1.0
